@@ -1,0 +1,17 @@
+# Demo 2 - no-show tracking, automatic block, receptionist unblock, restart with data intact.
+# Uses the same data folder as demo 1 (a new process = a restart).
+login 1 admin123
+noshow 6
+logout
+login 9 patient123
+book 2 2026-11-04T09:00 CONSULTATION
+logout
+login 1 admin123
+report noshow
+patient unblock 9
+logout
+login 9 patient123
+book 2 2026-11-04T09:00 CONSULTATION
+myappointments
+inbox
+exit

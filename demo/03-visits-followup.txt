@@ -1,0 +1,14 @@
+# Demo 3 - check-in, visit notes, completion, patient history and a follow-up booking.
+login 1 admin123
+checkin 9
+logout
+login 2 doctor123
+myappointments
+visit note 9 "Patient reports headache for three days, no fever." --diagnosis="Tension headache" --rx="Paracetamol 500mg as needed"
+complete 9
+logout
+login 12 patient123
+history 12
+book 2 2026-11-04T10:00 FOLLOWUP
+myappointments
+exit

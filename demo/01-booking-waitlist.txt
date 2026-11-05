@@ -1,0 +1,21 @@
+# Demo 1 - booking rules, overlap suggestions, late cancellation and waiting list.
+# Run with: java -jar target/clinic-app.jar --data=demo-data --now=2026-11-02T08:00 < demo/01-booking-waitlist.txt
+login 1 admin123
+slots 2 2026-11-02
+book 2 2026-11-02T10:00 CONSULTATION --patient=7
+book 2 2026-11-02T10:15 CONSULTATION --patient=8
+logout
+login 7 patient123
+cancel 18 --reason="changed plans"
+logout
+login 8 patient123
+waitlist join 2 2026-11-02 2026-11-02 --time=AFTERNOON
+logout
+login 1 admin123
+cancel 10 --reason="freed for the waiting list"
+logout
+login 8 patient123
+inbox
+waitlist accept 1
+myappointments
+exit

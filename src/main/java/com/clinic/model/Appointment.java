@@ -22,10 +22,10 @@ public class Appointment {
     private LocalDateTime start;
     private LocalDateTime end;
     private AppointmentStatus status = AppointmentStatus.BOOKED;
-    private BigDecimal baseFee = BigDecimal.ZERO;
-    private BigDecimal patientShare = BigDecimal.ZERO;
-    private BigDecimal insurerShare = BigDecimal.ZERO;
-    private BigDecimal lateCancellationFee = BigDecimal.ZERO;
+    private BigDecimal baseFee = new BigDecimal("0.00");
+    private BigDecimal patientShare = new BigDecimal("0.00");
+    private BigDecimal insurerShare = new BigDecimal("0.00");
+    private BigDecimal lateCancellationFee = new BigDecimal("0.00");
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private LocalDateTime cancelledAt;

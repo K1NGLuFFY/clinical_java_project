@@ -4,6 +4,7 @@ target/
 
 # Runtime data produced by the application (seed data is generated on first run)
 data/
+demo-data/
 
 # IDE / OS noise
 .idea/

@@ -188,6 +188,7 @@ public final class SeedData {
         Appointment late = place(sarah, bello, today.minusDays(2), LocalTime.of(15, 0),
                 AppointmentTypeCode.CONSULTATION, AppointmentStatus.CANCELLED, false);
         late.setCancelledAt(late.getStart().minusHours(3));
+        late.setUpdatedAt(late.getCancelledAt());
         late.setLateCancellationFee(billing.lateCancellationFee(late.getType()));
         appointments.save(late);
 
@@ -283,18 +284,27 @@ public final class SeedData {
         if (worksOn(doctor, preferred)) {
             return preferred;
         }
-        boolean past = preferred.isBefore(today);
+        if (preferred.isBefore(today)) {
+            // Historical seed data must stay in the past: search backwards only.
+            for (int i = 1; i <= 14; i++) {
+                LocalDate backward = preferred.minusDays(i);
+                if (worksOn(doctor, backward)) {
+                    return backward;
+                }
+            }
+            return preferred;
+        }
         for (int i = 1; i <= 10; i++) {
             LocalDate forward = preferred.plusDays(i);
-            if (past && forward.isAfter(today)) {
-                break;
-            }
             if (worksOn(doctor, forward)) {
                 return forward;
             }
         }
         for (int i = 1; i <= 14; i++) {
             LocalDate backward = preferred.minusDays(i);
+            if (backward.isBefore(today)) {
+                break;
+            }
             if (worksOn(doctor, backward)) {
                 return backward;
             }
