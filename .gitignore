@@ -1,0 +1,19 @@
+# Maven build output
+target/
+*.class
+
+# Runtime data produced by the application (seed data is generated on first run)
+data/
+
+# IDE / OS noise
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
