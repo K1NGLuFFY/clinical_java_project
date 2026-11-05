@@ -123,6 +123,8 @@ public final class ClinicApp {
 
         SeedData seedData = new SeedData(users, appointments, visits, billing, clock);
         boolean seeded = seedData.seedIfEmpty();
+        // Safety net for a partially wiped data folder: the brief requires a default receptionist.
+        auth.ensureDefaultReceptionist();
 
         // Expiry is lazy: checked at startup and before every command (no background threads).
         waitlistService.expireOffers();

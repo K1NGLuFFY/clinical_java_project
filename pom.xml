@@ -25,6 +25,13 @@
       <groupId>com.google.code.gson</groupId>
       <artifactId>gson</artifactId>
       <version>${gson.version}</version>
+      <exclusions>
+        <!-- Annotation-only transitive dependency; keeps Gson the only real third-party library. -->
+        <exclusion>
+          <groupId>com.google.errorprone</groupId>
+          <artifactId>error_prone_annotations</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
   </dependencies>
 
