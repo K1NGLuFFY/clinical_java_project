@@ -135,7 +135,11 @@ public final class ConsoleUI {
         try {
             context.waitlist().expireOffers();
         } catch (ClinicException | RuntimeException ex) {
-            // A failing housekeeping call must never close the console; the command still runs.
+            String message = ex.getMessage();
+            if (message == null || message.isBlank()) {
+                message = ex.getClass().getSimpleName();
+            }
+            System.err.println("Warning: could not expire waiting-list offers: " + message);
         }
     }
 
