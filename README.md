@@ -400,8 +400,13 @@ clinical_java_project/
 ├── pom.xml
 ├── README.md
 ├── docs/
-│   ├── uml.md          UML class diagrams + lifecycle + package diagram (Mermaid)
-│   └── DEMO.md         5-minute demo script with expected output
+│   ├── Clinic_Appointment_System_Documentation.docx   submission report (25 pages)
+│   ├── Clinic_Appointment_System_Presentation.pptx    presentation deck (16 slides + speaker notes)
+│   ├── requirements-checklist.md                      brief requirement -> code/evidence map
+│   ├── uml.md                                         UML + lifecycle + package diagrams (Mermaid)
+│   ├── DEMO.md                                        5-minute demo script with expected output
+│   ├── images/                                        diagrams and terminal captures used by the DOCX/PPTX
+│   └── build/                                         scripts that generate the diagrams and the DOCX/PPTX
 ├── demo/               scripted demo sessions (pipable command files) + run-demos.ps1
 └── src/main/java/com/clinic/...
 ```
@@ -409,7 +414,23 @@ clinical_java_project/
 The self-test harness lives in `src/main/java/com/clinic/SelfTest.java` on purpose: the brief allows
 Gson as the only third-party library, so no test framework dependency is added.
 
-## 11. Git history
+## 11. Submission documentation and slides
+
+The two files handed in for the written and oral parts are in `docs/`:
+
+* **`docs/Clinic_Appointment_System_Documentation.docx`** - a 25-page report covering the
+  problem, requirements, architecture, domain model, the scheduling/booking/pricing/waiting-list
+  subsystems, persistence, CLI, verification, design patterns, limitations and build/run
+  instructions, with 12 figures, 20 tables and code listings.
+* **`docs/Clinic_Appointment_System_Presentation.pptx`** - a 16-slide 16:9 presentation with
+  editable diagrams, real console captures and speaker notes on every slide (open the Notes pane
+  while presenting or print the notes pages).
+
+Both are generated from the code and the diagram scripts in `docs/build/`. The title page and the
+title/final slides contain **`[Your Name]`, `[Student ID]`, `[Course / Module]` and
+`[Submission date]` placeholders** - replace them before exporting/submitting.
+
+## 12. Git history
 
 The repository contains incremental commits that follow the three milestones of the brief
 (models/rules, services/persistence/CLI, visits/reports/polish). Use `git log --oneline` to see
