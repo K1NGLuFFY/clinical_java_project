@@ -179,7 +179,8 @@ def add_header_footer(document: Document, title: str) -> None:
     of.font.color.rgb = GRAY
     _add_field(footer, "NUMPAGES")
 
-def add_cover(document: Document, meta: list[tuple[str, str]]) -> None:
+def add_cover(document: Document, meta: list[tuple[str, str]],
+              team: list[tuple[str, str]] | None = None) -> None:
     spacer = document.add_paragraph()
     spacer.paragraph_format.space_after = Pt(70)
 
@@ -210,6 +211,12 @@ def add_cover(document: Document, meta: list[tuple[str, str]]) -> None:
     run.font.color.rgb = TEAL
     run.font.bold = True
 
+    if team:
+        document.add_paragraph()
+        add_table(document, ["Team member", "Student ID"],
+                  [[name, student_id] for name, student_id in team],
+                  widths=[9.0, 7.0], font_size=9.5)
+
     document.add_paragraph()
     for key, value in meta:
         paragraph = document.add_paragraph()
@@ -226,8 +233,8 @@ def add_cover(document: Document, meta: list[tuple[str, str]]) -> None:
     document.add_paragraph()
     note = document.add_paragraph()
     note.paragraph_format.space_before = Pt(26)
-    run = note.add_run("Submission note: replace the bracketed placeholders on this page with your own "
-                       "name, student number, course and submission date before exporting to PDF.")
+    run = note.add_run("Submission note: fill in the pending team name, course/module, instructor "
+                       "and submission date before exporting to PDF.")
     run.font.size = Pt(8.5)
     run.font.italic = True
     run.font.color.rgb = GRAY

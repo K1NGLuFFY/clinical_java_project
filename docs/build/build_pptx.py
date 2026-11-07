@@ -187,8 +187,12 @@ def build():
        "Scheduling rules, pricing strategies, waiting lists and JSON persistence in one Java 17 console application.",
        size=16, color=GRAY_LIGHT, spacing=1.15)
     rect(slide, 0.85, 5.55, 4.4, 0.045, TEAL_BRIGHT, shape=MSO_SHAPE.RECTANGLE)
-    tb(slide, 0.85, 5.75, 7.4, 0.35, "Presented by [Your Name]  ·  [Course / Module]  ·  2026", size=12, color=GRAY_LIGHT)
-    tb(slide, 0.85, 6.2, 7.4, 0.35, "31 commands  ·  40 self-checks  ·  4 management reports  ·  Gson only", size=11, color=TEAL_BRIGHT)
+    tb(slide, 0.85, 5.62, 7.4, 0.67,
+       "Onah Debeiwu Chrysanctus — Student1639236\n"
+       "Okeke Chiemerie Miracle — Student1647235\n"
+       "[NAME PENDING] — Student1627019",
+       size=10, color=GRAY_LIGHT, spacing=1.05)
+    tb(slide, 0.85, 6.38, 7.4, 0.35, "31 commands  ·  40 self-checks  ·  4 management reports  ·  Gson only", size=10.5, color=TEAL_BRIGHT)
     notes(slide, "Introduce yourself and the project in one sentence: a console clinic appointment system that "
                  "enforces every booking rule, prices appointments with strategies, offers cancelled slots to a "
                  "waiting list and keeps all data in JSON. Mention the stack: Java 17, Maven, Gson only.")
@@ -582,10 +586,14 @@ def build():
     tb(slide, 0.85, 2.0, 8.6, 1.0, "Thank you", size=48, bold=True, color=WHITE)
     tb(slide, 0.85, 3.1, 8.6, 0.6, "Questions?", size=26, color=TEAL_BRIGHT)
     tb(slide, 0.85, 4.15, 8.2, 1.0,
-       "The project is in  clinical_java_project: source, README, UML diagrams, demo scripts and this deck.",
+       "The project is in clinical_java_project: source, README, UML diagrams, demo scripts and this deck.",
        size=13.5, color=GRAY_LIGHT, spacing=1.2)
     rect(slide, 0.85, 5.55, 4.6, 0.04, TEAL_BRIGHT, shape=MSO_SHAPE.RECTANGLE)
-    tb(slide, 0.85, 5.75, 8.0, 0.4, "[Your Name]  ·  [Student ID]  ·  [Course / Module]", size=12, color=GRAY_LIGHT)
+    tb(slide, 0.85, 5.72, 8.0, 0.85,
+       "Onah Debeiwu Chrysanctus — Student1639236\n"
+       "Okeke Chiemerie Miracle — Student1647235\n"
+       "[NAME PENDING] — Student1627019",
+       size=10.5, color=GRAY_LIGHT, spacing=1.05)
     footer(slide, 16, dark=True)
     notes(slide, "End with the takeaway: a small console application that still does the hard parts properly - "
                  "time arithmetic, rule enforcement, pricing strategies, waiting lists, data integrity and "
@@ -594,7 +602,7 @@ def build():
     properties = prs.core_properties
     properties.title = "Console Clinic Appointment System"
     properties.subject = "Java 17 console clinic appointment system - project presentation"
-    properties.author = "[Your Name]"
+    properties.author = "Console Clinic Appointment System Team"
     properties.keywords = "Java, clinic, appointments, scheduling, pricing, JSON, Gson"
     properties.comments = "Editable presentation; speaker notes are included for every slide."
 

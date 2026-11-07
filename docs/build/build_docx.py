@@ -24,15 +24,18 @@ def build() -> None:
                      "Design, implementation and verification of a Java console clinic appointment system",
                      "Clinic Appointment System project")
     H.add_header_footer(doc, "Console Clinic Appointment System")
+    team = [
+        ("Onah Debeiwu Chrysanctus", "Student1639236"),
+        ("Okeke Chiemerie Miracle", "Student1647235"),
+        ("[NAME PENDING]", "Student1627019"),
+    ]
     H.add_cover(doc, [
         ("Course", "[Course / Module]"),
-        ("Student", "[Your Name]"),
-        ("Student ID", "[Student ID]"),
         ("Instructor", "[Instructor]"),
         ("Submission", "[Submission date]"),
         ("Version", "1.0"),
         ("Repository", "clinical_java_project"),
-    ])
+    ], team=team)
     H.add_toc(doc, [
         ("1", "Introduction"),
         ("2", "Requirements"),
@@ -58,6 +61,9 @@ def build() -> None:
 
     # ------------------------------------------------------------------ 1 introduction
     H.heading(doc, "1  Introduction")
+    H.add_table(doc, ["Team member", "Student ID"],
+                [[name, student_id] for name, student_id in team],
+                widths=[9.0, 7.0], font_size=9.5)
     H.heading(doc, "1.1  Background", 2)
     H.para(doc, "Small clinics often book patients by telephone and record the appointments in a paper diary "
                 "or a shared spreadsheet. That works for a handful of patients a day, but growth exposes the "
