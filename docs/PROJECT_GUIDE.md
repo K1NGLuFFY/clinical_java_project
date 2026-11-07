@@ -312,7 +312,7 @@ registry grants. (`CommandRegistry`)
 | Command family | Commands | Implementation |
 |---|---|---|
 | Session | `login`, `logout`, `help`, `exit` | `SessionCommands.java` |
-| Shared | `inbox`, `slots`, `doctor list` | `InboxCommand`, `SlotsCommand`, `DoctorCommands` |
+| Shared | `inbox`, `slots` | `InboxCommand`, `SlotsCommand` |
 | Booking | `book`, `reschedule`, `cancel`, `myappointments` | `BookingCommands` |
 | Waiting list | `waitlist join/accept/leave/decline/list` | `WaitlistCommands` |
 | Patient administration | `patient add/unblock/list` | `PatientCommands` |
@@ -362,10 +362,13 @@ fails. (`SelfTest.main`, `SelfTest.check`, `SelfTest.expect`)
 Build verification on JDK 25 (compiler release 17) completed as follows:
 
 ```text
-mvn -q clean compile  -> exit 0, no warnings or errors
-mvn -q test-compile   -> exit 0, no warnings or errors
+mvn -q clean compile  -> exit 0; no Maven diagnostics
+mvn -q test-compile   -> exit 0; no Maven diagnostics
 mvn clean package     -> BUILD SUCCESS
 ```
+
+PowerShell emitted a standalone `Access is denied.` line before Maven output; all Maven
+commands still returned exit code 0.
 
 The Maven shade manifest overlap warning was resolved by excluding Gson’s manifest before
 assembly. (`pom.xml`, Maven Shade Plugin configuration)
@@ -432,7 +435,7 @@ implementation. (`VisitRecordRepository`, `AppointmentRepository`, `UserReposito
 | 17 | How do event listeners receive events? | Services publish to `EventBus`; `NotificationInbox` and `ActivityLog` are registered listeners. |
 | 18 | How are passwords persisted? | A per-user salt and hash are persisted; see `PasswordHasher` and `UserFactory`. |
 | 19 | What happens when JSON is corrupt? | `JsonSupport` raises `StorageException`; `Main.run` reports startup failure and exits with status 1. |
-| 20 | How do identifiers continue after restart? | `SequenceStore` saves the counters in `data/sequences.json`. |
+| 20 | How are identifiers preserved across restarts? | `SequenceStore` saves the counters in `data/sequences.json`. |
 | 21 | What checks the doctor’s weekly schedule? | `ScheduleRules.checkWorkingHours` and `Doctor.workingDay` use schedule and leave data. |
 | 22 | What is tested by the concurrency check? | Two booking threads race for one slot and exactly one succeeds; see `SelfTest.main`. |
 | 23 | Why are visit records append-only? | Corrections create amendments instead of overwriting history; see `VisitService.addNote`. |
@@ -637,12 +640,17 @@ nested records, and Gson adapters. (`git ls-files src`, Java type declarations)
 | `com.clinic.service` | `AuthService`, `BillingService`, `BookingGateway`, `BookingService`, `CreatedAccount`, `DailyScheduleReport`, `NoShowReport`, `NoShowReport.DoctorNoShow`, `PricingQuote`, `ReportService`, `RevenueReport`, `SchedulingService`, `UtilisationReport`, `VisitService`, `WaitlistService` |
 | `com.clinic.util` | `Formats`, `PasswordHasher`, `Validators` |
 
-## Appendix C. Git history at first guide pass
+## Appendix C. Git history before final guide sync
 
-The final guide pass refreshes this list after the cleanup/documentation commits.
+This is the history after Tasks 2–3 and before the final Task 4 guide synchronization.
 (`git log --oneline --graph -15`)
 
 ```text
+9c837bb docs(guide): add submission project guide
+1f3917a docs(team): add contributor details to Office deliverables
+4302e55 fix(build): exclude duplicate shaded manifest
+5a95e88 fix(cli): report waiting-list expiry failures
+3414cdf chore(cleanup): tighten Java ignore rules
 b0f9011 Implement code changes to enhance functionality and improve performance
 9816bea Refactor code structure for improved readability and maintainability
 c6c3eb8 chore+docs: exclude annotation-only dependency, default receptionist safety net, requirements checklist
@@ -939,8 +947,8 @@ paths are created or maintained by `ClinicApp.open` and the JSON repositories.
 - `src/main/java/com/clinic/repository/NotificationRepository.java` — Inbox persistence
   contract for saving, listing, and updating notifications. Used by `NotificationInbox`.
 - `src/main/java/com/clinic/repository/SequenceStore.java` — Reads and updates
-  `data/sequences.json` so account, appointment, waitlist, visit, and notification IDs continue
-  monotonically across process restarts.
+  `data/sequences.json` so account, appointment, waitlist, visit, and notification IDs remain
+  monotonic across process restarts.
 - `src/main/java/com/clinic/repository/UserRepository.java` — Account persistence interface for
   general users and typed doctor/patient/receptionist lookup and listing, saving, and user ID
   allocation. Services depend on this interface rather than JSON storage.
