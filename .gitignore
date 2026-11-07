@@ -1,12 +1,12 @@
-# Maven build output
 target/
 *.class
 
-# Runtime data produced by the application (seed data is generated on first run)
-data/
+# Application data is generated at runtime. Keep the directory in a fresh checkout.
+data/*
+!data/.gitkeep
 demo-data/
 
-# IDE / OS noise
+# IDE and OS files
 .idea/
 *.iml
 .vscode/
@@ -16,8 +16,5 @@ demo-data/
 .DS_Store
 Thumbs.db
 
-# Logs
+# Runtime logs
 *.log
-
-# Temporary render previews
-.dsh-office-*/
