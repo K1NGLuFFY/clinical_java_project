@@ -406,7 +406,7 @@ clinical_java_project/
 │   ├── uml.md                                         UML + lifecycle + package diagrams (Mermaid)
 │   ├── DEMO.md                                        5-minute demo script with expected output
 │   ├── images/                                        diagrams and terminal captures used by the DOCX/PPTX
-│   └── build/                                         scripts that generate the diagrams and the DOCX/PPTX
+│   └── build/                                         saved output excerpts for the verification checks
 ├── demo/               scripted demo sessions (pipable command files) + run-demos.ps1
 └── src/main/java/com/clinic/...
 ```
@@ -421,14 +421,23 @@ The two files handed in for the written and oral parts are in `docs/`:
 * **`docs/Clinic_Appointment_System_Documentation.docx`** - a 25-page report covering the
   problem, requirements, architecture, domain model, the scheduling/booking/pricing/waiting-list
   subsystems, persistence, CLI, verification, design patterns, limitations and build/run
-  instructions, with 12 figures, 20 tables and code listings.
+  instructions, with 12 figures, 22 tables and code listings.
 * **`docs/Clinic_Appointment_System_Presentation.pptx`** - a 16-slide 16:9 presentation with
   editable diagrams, real console captures and speaker notes on every slide (open the Notes pane
   while presenting or print the notes pages).
 
-Both are generated from the code and the diagram scripts in `docs/build/`. The title page and the
-title/final slides contain **`[Your Name]`, `[Student ID]`, `[Course / Module]` and
-`[Submission date]` placeholders** - replace them before exporting/submitting.
+The DOCX cover and its Section 1 team table, plus the PPTX title and final slides, include:
+
+| Team member | Student ID |
+|---|---|
+| Onah Debeiwu Chrysanctus | Student1639236 |
+| Okeke Chiemerie Miracle | Student1647235 |
+| Okonkwo Samuel chiemerie | Student1627019 |
+
+Course: Java development; Instructor: Mr Kamsi; Submission date: 20th November 2026.
+
+The detailed source-by-source guide is available at `docs/PROJECT_GUIDE.md` and the repository
+root as `PROJECT_GUIDE.md`. The Office documents and diagrams are included as finalized files.
 
 ## 12. Git history
 

@@ -6,11 +6,11 @@
 |---|---|
 | Onah Debeiwu Chrysanctus | Student1639236 |
 | Okeke Chiemerie Miracle | Student1647235 |
-| [NAME PENDING] | Student1627019 |
+| Okonkwo Samuel chiemerie | Student1627019 |
 
-- Course / Module: [Course / Module]
-- Instructor: [Instructor]
-- Submission date: [Submission date]
+- Course / Module: Java development
+- Instructor: Mr Kamsi
+- Submission date: 20th November 2026
 
 ## 1. Project overview
 
@@ -44,7 +44,7 @@ registers event listeners, and supplies a shared injected `Clock`. (`ClinicApp.o
 The canonical application contains 110 Java source files across the `com.clinic` packages. It
 includes a self-test harness rather than a separate `src/test/java` suite. The current tracked
 deliverables also include a README, demo scripts, a requirements checklist, UML documentation,
-Office reports, and documentation-generation sources. (`SelfTest.main`, `pom.xml`)
+Office reports, and saved verification output. (`SelfTest.main`, `pom.xml`)
 
 ## 2. Build, run, self-test, and demo
 
@@ -476,10 +476,6 @@ docs/Clinic_Appointment_System_Presentation.pptx
 docs/Clinic_Appointment_System_Project_Brief.pdf
 docs/DEMO.md
 docs/PROJECT_GUIDE.md
-docs/build/build_docx.py
-docs/build/build_pptx.py
-docs/build/docx_helpers.py
-docs/build/make_assets.py
 docs/build/out_noshow.txt
 docs/build/out_selftest.txt
 docs/build/out_slots.txt
@@ -640,9 +636,9 @@ nested records, and Gson adapters. (`git ls-files src`, Java type declarations)
 | `com.clinic.service` | `AuthService`, `BillingService`, `BookingGateway`, `BookingService`, `CreatedAccount`, `DailyScheduleReport`, `NoShowReport`, `NoShowReport.DoctorNoShow`, `PricingQuote`, `ReportService`, `RevenueReport`, `SchedulingService`, `UtilisationReport`, `VisitService`, `WaitlistService` |
 | `com.clinic.util` | `Formats`, `PasswordHasher`, `Validators` |
 
-## Appendix C. Git history before final guide sync
+## Appendix C. Git history before submission metadata update
 
-This is the history after Tasks 2–3 and before the final Task 4 guide synchronization.
+Recent repository history before this submission-metadata update.
 (`git log --oneline --graph -15`)
 
 ```text
@@ -1032,10 +1028,11 @@ current files are seeded/working data and may not match a fresh installation’s
 - `data/waitlist.json` — Array of waiting-list entries, including requested date/time preferences,
   status, and any held offer. Managed by `JsonWaitlistRepository`.
 
-## Manual completion items
+## Submission status
 
-- Replace `[NAME PENDING]` with the confirmed name for Student1627019.
-- Fill in Course / Module, Instructor, and Submission date.
-- Confirm the spelling “Okeke Chiemerie Miracle.”
-- Export this Markdown guide to PDF if a PDF is required:
-  `pandoc docs/PROJECT_GUIDE.md -o docs/PROJECT_GUIDE.pdf`.
+The team names and submission details above have been filled in. If a PDF copy of this Markdown
+guide is required, export it with:
+
+```powershell
+pandoc docs/PROJECT_GUIDE.md -o docs/PROJECT_GUIDE.pdf
+```
